@@ -21,7 +21,6 @@ Este projeto é um simulador de investimentos na bolsa de valores, permitindo qu
 ## Estrutura do Projeto
 ```
 backend/
-backend/
 │
 ├── prisma/
 │ ├── schema.prisma # Esquema do Prisma
