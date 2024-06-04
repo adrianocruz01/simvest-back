@@ -1,6 +1,6 @@
 {
   "name": "simvest-back",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Este projeto é um simulador de investimentos na bolsa de valores, permitindo que os usuários comprem e vendam ações fictícias e acompanhem seu portfólio ao longo do tempo. O backend é construído usando NestJS, Prisma ORM e PostgreSQL.",
   "author": "Adriano Cruz",
   "private": true,
@@ -17,12 +17,16 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "seed": "prisma migrate deploy && ts-node prisma/seeds/seeder.ts"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
+    "@prisma/client": "^5.15.0",
+    "@types/bcrypt": "^5.0.2",
+    "bcrypt": "^5.1.1",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1"
   },

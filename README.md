@@ -1,73 +1,83 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Simulador de Investimentos
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Descrição
+Este projeto é um simulador de investimentos na bolsa de valores, permitindo que os usuários comprem e vendam ações fictícias e acompanhem seu portfólio ao longo do tempo. O backend é construído usando NestJS, Prisma ORM e PostgreSQL.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Funcionalidades
+- Registro e autenticação de usuários
+- Compra e venda de ações
+- Visualização de portfólio
+- Histórico de transações
+- Integração com a API Alpha Vantage para obter preços de ações em tempo real
 
-## Description
+## Tecnologias Utilizadas
+- **Node.js**
+- **NestJS**
+- **Prisma ORM**
+- **PostgreSQL**
+- **Axios** (para integração com API externa)
+- **JWT** (para autenticação)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ npm install
+## Estrutura do Projeto
+```
+backend/
+backend/
+│
+├── prisma/
+│ ├── schema.prisma # Esquema do Prisma
+│ └── migrations/ # Migrações do banco de dados
+│
+├── .env.example # Exemplo de arquivo de variáveis de ambiente
+├── package.json
+├── README.md
+└── tsconfig.json
 ```
 
-## Running the app
 
-```bash
-# development
-$ npm run start
+## Configuração do Ambiente de Desenvolvimento
+### Pré-requisitos
+- Node.js v14 ou superior
+- PostgreSQL
 
-# watch mode
-$ npm run start:dev
+### Passos para Configuração
+1. **Clone o Repositório:**
+   ```bash
+   git clone https://github.com/adrianocruz01/simvest-back.git
+   cd simvest.back
+   ```
+2. **Instale as Dependências:**
+   ```bash
+   npm install
+   ```
+3. **Configure as Variáveis de Ambiente:**
+   Renomeie o arquivo `.env.example` para `.env` e preencha com suas configurações:
+   ```
+   DATABASE_URL=postgresql://usuario:senha@localhost:5432/seu_banco_de_dados
+   JWT_SECRET=sua_chave_secreta
+   ALPHA_VANTAGE_API_KEY=sua_api_key_alpha_vantage
+   ```
+4. **Execute as Migrações do Prisma:**
+   ```bash
+   npm run seed
+   ```
+5. **Inicie o Servidor:**
+   ```bash
+   npm run start:dev
+   ```
 
-# production mode
-$ npm run start:prod
-```
+## Uso
+### Endpoints Principais, vamos criar eles futuramente, ou então nem sejam eles...
+- `POST /auth/register` - Registro de novos usuários
+- `POST /auth/login` - Login de usuários
+- `GET /portfolio` - Visualizar portfólio do usuário
+- `POST /transactions/buy` - Comprar ações
+- `POST /transactions/sell` - Vender ações
+- `GET /stocks/price` - Consultar preço de ações
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+## Contribuição
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
+3. Adicione todos os aquivos no git (`git add .`)
+4. Commit suas alterações (`git commit -m 'Adiciona nova feature'`)
+5. Push para a branch (`git push origin feature/nova-feature`)
+6. Abra um Pull Request

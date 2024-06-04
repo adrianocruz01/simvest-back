@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(100)
+  email     String   @unique @db.VarChar(100)
+  password  String   @db.VarChar(100)
+  cpf       String   @unique @db.VarChar(14)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Transactions Transaction[]
+  Portfolio   Portfolio[]
+}
+
+model Stock {
+  id          Int      @id @default(autoincrement())
+  symbol      String   @db.VarChar(10)
+  name        String   @db.VarChar(255)
+  currentPrice Float
+  createdAt   DateTime @default(now())
+  Transactions Transaction[]
+  Portfolio    Portfolio[]
+}
+
+model Transaction {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  stockId    Int
+  quantity   Int
+  price      Float
+  type       String   @db.VarChar(10) 
+  createdAt  DateTime @default(now())
+  User       User     @relation(fields: [userId], references: [id])
+  Stock      Stock    @relation(fields: [stockId], references: [id])
+}
+
+model Portfolio {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  stockId    Int
+  quantity   Int
+  createdAt  DateTime @default(now())
+  User       User     @relation(fields: [userId], references: [id])
+  Stock      Stock    @relation(fields: [stockId], references: [id])
+}

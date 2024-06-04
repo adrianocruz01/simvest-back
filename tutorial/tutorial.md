@@ -55,7 +55,7 @@ DATABASE_URL=postgresql://postgres:minha_senha@localhost:5432/meu_banco_de_dados
 Após criar o banco de dados e organizar o env, eu solto o comando que roda as migrations apontando para o banco que meu env esta configurado:
 
 ```
-npx prisma migrate dev --name init
+npx prisma migrate dev --name createdb
 ```
 
 A partir de então, você ja tem um banco configurado, e consegue acessar pelo DBeaver ou Beekeeper, ou qualquer outra plataforma de acesso.
